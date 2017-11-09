@@ -19,12 +19,12 @@ last_time = time.time()
 while True:
 
 
-    screen =  np.array(ImageGrab.grab(bbox=(950,440,1125,600))) #grab the image from computer screen at coordinates (x, y, xx, yy) , x,y = top left , xx,yy = bottom right
+    screen =  np.array(ImageGrab.grab(bbox=(750,400,1000,600))) #grab the image from computer screen at coordinates (x, y, xx, yy) , x,y = top left , xx,yy = bottom right
     #PIL image from ImageGrab needs to be fixed to work with OpenCV representation
     image = np.array(screen) # Convert PIL Image to numpy/OpenCV image representation
     image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR) # convert current image from RGB to BGR
     cv2.imshow('window', image)
-    path = 'C:/Users/Austin/Documents/GitHub/League-of-Legends-Image-Classifiers/Data/Gnar'
+    path = 'C:/Users/Austin/Documents/GitHub/League-of-Legends-Image-Classifiers/Data/Nami'
     imagename = str(time.time()) + ".jpg"
 
     fps = (1 / (time.time()-last_time))
