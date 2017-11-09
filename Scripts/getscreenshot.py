@@ -19,22 +19,24 @@ last_time = time.time()
 while True:
 
 
-    screen =  np.array(ImageGrab.grab(bbox=(950,275,1125,475))) #grab the image from computer screen at coordinates (x, y, xx, yy) , x,y = top left , xx,yy = bottom right
-    fps = (1 / (time.time()-last_time))
-    if counter == 10:
-        print('FPS:' + str(fps))
-        counter = 0
-    else:
-        counter += 1
-    last_time = time.time()
-    timeu = format(time.time()-last_time)
+    screen =  np.array(ImageGrab.grab(bbox=(950,440,1125,600))) #grab the image from computer screen at coordinates (x, y, xx, yy) , x,y = top left , xx,yy = bottom right
     #PIL image from ImageGrab needs to be fixed to work with OpenCV representation
     image = np.array(screen) # Convert PIL Image to numpy/OpenCV image representation
     image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR) # convert current image from RGB to BGR
     cv2.imshow('window', image)
-    path = 'C:/Users/Austin/Documents/GitHub/League-of-Legends-Image-Classifiers/Data/TestImages'
+    path = 'C:/Users/Austin/Documents/GitHub/League-of-Legends-Image-Classifiers/Data/Gnar'
     imagename = str(time.time()) + ".jpg"
-    cv2.imwrite(os.path.join(path , imagename ), image)
+
+    fps = (1 / (time.time()-last_time))
+    if counter == 10:
+        print('FPS:' + str(fps))
+        counter = 0
+        cv2.imwrite(os.path.join(path , imagename ), image)
+    else:
+        counter += 1
+    last_time = time.time()
+    timeu = format(time.time()-last_time)
+
     if cv2.waitKey(25) & 0xFF == ord('q'):
         cv2.destroyAllWindows()
         break
